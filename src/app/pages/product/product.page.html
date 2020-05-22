@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{product.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="URL_IMG + product.id + '.jpg'">
+    <ion-card-content>
+      {{product.description}}
+      <small>{{product.unity}}: {{product.price | currency:'COP':'symbol-narrow':'1.0-0'}}</small>
+      <small>Total: <b>{{product.price * product.quantity | currency:'COP':'symbol-narrow':'1.0-0'}}</b></small>
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <ion-label>Cantidad:</ion-label>
+    <ion-input type="number" [(ngModel)]="product.quantity" min="1"></ion-input>
+  </ion-item>
+  <div class="buttons">
+    <ion-button color="medium" (click)="modalCtrl.dismiss()">Cancelar</ion-button>
+    <ion-button color="primary" (click)="add()">Añadir al Carrito</ion-button>
+  </div>
+</ion-content>

@@ -6,7 +6,8 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'products'
+    redirectTo: 'tabs',
+    pathMatch: 'full'
   },
   {
     path: '',
@@ -14,19 +15,44 @@ const routes: Routes = [
     children: [
       {
         path: 'products',
-        loadChildren: '../products/products.module#ProductsPageModule'
+        children: [
+          {
+            path: '',
+            loadChildren: '../products/products.module#ProductsPageModule'
+          },
+          {
+            path: 'market/:id',
+            children: [
+              {
+                path: '',
+                loadChildren: '../market/market.module#MarketPageModule'
+              }
+            ]
+          }
+        ]
       },
       {
         path: 'cart',
-        loadChildren: '../cart/cart.module#CartPageModule'
+        children: [
+          {
+            path: '',
+            loadChildren: '../cart/cart.module#CartPageModule'
+          }
+        ]
       },
       {
         path: 'company',
-        loadChildren: '../company/company.module#CompanyPageModule'
+        children: [
+          {
+            path: '',
+            loadChildren: '../company/company.module#CompanyPageModule'
+          }
+        ]
       },
       {
-        path: 'market/:id',
-        loadChildren: '../market/market.module#MarketPageModule'
+        path: '',
+        redirectTo: 'products',
+        pathMatch: 'full'
       }
     ]
   }

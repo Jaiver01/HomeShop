@@ -1,5 +1,7 @@
 {
   "name": "HomeShop",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -1,21 +1,19 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-searchbar placeholder="Buscar productos o empresas..." (ionChange)="search($event)" debounce="300"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar productos o empresas..." (ionChange)="search($event)" debounce="500"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products" [routerLink]="['/tabs/market', product.id]" detail>
+    <ion-item *ngFor="let product of products" [routerLink]="['market', product.company]" routerDirection="forward" detail>
       <ion-avatar slot="start">
-        <img [src]="product.image">
+        <img [src]="URL_IMG + product.id + '.jpg'">
       </ion-avatar>
       <ion-label>
         <h2>{{product.name}}</h2>
-        <h3>{{product.company}}</h3>
-      </ion-label>
-      <ion-label slot="end">
-        <small>{{product.price | currency:'USD':true:'1.0-0'}}</small>
+        <h3>{{product.companyName}}</h3>
+        <small>{{product.unity}}: {{product.price | currency:'COP':'symbol-narrow':'1.0-0'}}</small>
       </ion-label>
     </ion-item>
   </ion-list>

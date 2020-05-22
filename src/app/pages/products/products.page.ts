@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
+import { URL_IMG } from '../../../config/url.services';
 
 @Component({
   selector: 'app-products',
@@ -8,24 +9,24 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductsPage implements OnInit {
 
+  URL_IMG = URL_IMG;
   products: Product[] = [];
   page = 0;
-  filter = '';
 
   constructor(private productsService: ProductsService) { }
 
   async ngOnInit() {
-    this.products = await this.getProducts(this.page, this.filter);
+    this.products = await this.getProducts(this.page);
   }
 
-  private async search(event) {
-    this.products = await this.getProducts(this.page, this.filter);
+  public async search(event) {
+    this.products = await this.getProducts(this.page, event.detail.value);
   }
 
-  private getProducts(page: number, filter: string): Promise<any> {
+  private getProducts(page: number = 0, filter: string = ''): Promise<any> {
     return new Promise((resolve) => {
       this.productsService.getProducts(page, filter).subscribe((result) => {
-        resolve(result.productos);
+        resolve(result.products);
       });
     });
   }
@@ -37,5 +38,7 @@ interface Product {
   image: string;
   description: string;
   price: number;
+  unity: string;
   company: number;
+  companyName: string;
 }
