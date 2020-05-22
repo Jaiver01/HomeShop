@@ -1,0 +1,1 @@
+export const URL_SERVICES = "http://localhost/api/index.php";
