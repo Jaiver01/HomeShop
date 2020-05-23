@@ -6,11 +6,6 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tabs',
-    pathMatch: 'full'
-  },
-  {
-    path: 'tabs',
     component: TabsPage,
     children: [
       {
@@ -18,14 +13,14 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../products/products.module#ProductsPageModule'
+            loadChildren: () => import('../products/products.module').then( m => m.ProductsPageModule)
           },
           {
             path: 'market/:id',
             children: [
               {
                 path: '',
-                loadChildren: '../market/market.module#MarketPageModule'
+                loadChildren: () => import('../market/market.module').then( m => m.MarketPageModule)
               }
             ]
           }
@@ -36,7 +31,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../cart/cart.module#CartPageModule'
+            loadChildren: () => import('../cart/cart.module').then( m => m.CartPageModule)
           }
         ]
       },
@@ -45,7 +40,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../company/company.module#CompanyPageModule'
+            loadChildren: () => import('../company/company.module').then( m => m.CompanyPageModule)
           }
         ]
       },

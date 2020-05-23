@@ -1,2 +1,2 @@
-export const URL_SERVICES = 'http://localhost/api/index.php';
-export const URL_IMG = 'http://localhost/api/public/img/products/';
+export const URL_SERVICES = 'https://homeshop-api.000webhostapp.com/api/index.php'; //http://localhost/api/index.php
+export const URL_IMG = 'https://homeshop-api.000webhostapp.com/api/public/img/products/'; //http://localhost/api/public/img/products/
