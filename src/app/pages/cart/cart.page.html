@@ -1,9 +1,16 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>cart</ion-title>
+    <ion-title>Carrito de Compras</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item *ngFor="let company of companies" (click)="show(company)" detail>
+      <ion-label>
+        <h2>{{company.name}}</h2>
+        <small>Total: {{company.totalProducts | currency:'COP':'symbol-narrow':'1.0-0'}}</small>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

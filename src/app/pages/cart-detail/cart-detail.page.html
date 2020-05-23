@@ -1,19 +1,12 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-searchbar placeholder="Buscar productos..." (ionChange)="search($event)" debounce="500"></ion-searchbar>
-  </ion-toolbar>
-  <ion-toolbar>
     <ion-title>{{company.name}}</ion-title>
-    <p class="ion-padding-start ion-padding-end"><small>{{company.description}}</small></p>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products" (click)="add(product)">
+    <ion-item *ngFor="let product of company.products" (click)="add(product)">
       <ion-avatar slot="start">
         <img [src]="URL_IMG + product.id + '.jpg'">
       </ion-avatar>
@@ -25,3 +18,13 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer">
+      <ion-label>Total Pedido: <b>{{company.totalProducts | currency:'COP':'symbol-narrow':'1.0-0'}}</b></ion-label>
+      <ion-button color="medium" (click)="modalCtrl.dismiss()">Atrás</ion-button>
+      <ion-button color="primary" (click)="order()">Hacer Pedido</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

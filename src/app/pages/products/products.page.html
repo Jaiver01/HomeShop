@@ -11,7 +11,7 @@
         <img [src]="URL_IMG + product.id + '.jpg'">
       </ion-avatar>
       <ion-label>
-        <h2>{{product.name}}</h2>
+        <h2>{{product.name | titlecase}}</h2>
         <h3>{{product.companyName}}</h3>
         <small>{{product.unity}}: {{product.price | currency:'COP':'symbol-narrow':'1.0-0'}}</small>
       </ion-label>

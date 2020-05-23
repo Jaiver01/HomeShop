@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { ProductPage } from '../product/product.page';
-import { CompanyService } from 'src/app/services/company.service';
-import { ProductsService } from 'src/app/services/products.service';
+import { CompanyService, ProductsService } from 'src/app/services/index.services';
 import { URL_IMG } from '../../../config/url.services';
 
 @Component({
