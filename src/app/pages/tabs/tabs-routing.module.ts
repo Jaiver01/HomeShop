@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children: [
       {

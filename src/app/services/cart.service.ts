@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
+import { URL_SERVICES } from '../../config/url.services';
 
 const STORAGE_KEY = 'cart';
 
@@ -8,7 +10,7 @@ const STORAGE_KEY = 'cart';
 })
 export class CartService {
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private http: HttpClient) { }
 
   public async addProductToCart(product: any) {
     return this.getAllProducts().then(result => {
@@ -26,8 +28,14 @@ export class CartService {
     });
   }
 
-  public async makeOrder(company: number){
-    await this.removeOrderToCart(company);
+  public async makeOrder(company: any){
+    return new Promise((resolve) => {
+      this.http.post(`${URL_SERVICES}/orders/set/`, company).subscribe((res: any) => {
+        if (!res.error) {
+          this.removeOrderToCart(company.id).then(()=>{ resolve(true); });
+        }
+      });
+    });
   }
 
   private async removeOrderToCart(company: number) {

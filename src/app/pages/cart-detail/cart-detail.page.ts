@@ -21,8 +21,13 @@ export class CartDetailPage implements OnInit {
   }
 
   public async order() {
-    await this.cartService.makeOrder(this.company.id);
-    this.modalCtrl.dismiss();
+    this.cartService.makeOrder(this.company).then(() => {
+      this.modalCtrl.dismiss();
+    });
+  }
+
+  public delete(product: any) {
+
   }
 
 }

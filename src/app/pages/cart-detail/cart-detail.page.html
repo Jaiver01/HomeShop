@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of company.products" (click)="add(product)">
+    <ion-item *ngFor="let product of company.products" (click)="delete(product)">
       <ion-avatar slot="start">
         <img [src]="URL_IMG + product.id + '.jpg'">
       </ion-avatar>
@@ -14,7 +14,7 @@
         <h2>{{product.name | titlecase}}</h2>
         <small>{{product.unity}}: {{product.price | currency:'COP':'symbol-narrow':'1.0-0'}}</small>
       </ion-label>
-      <ion-icon slot="end" name="add-circle-outline"></ion-icon>
+      <ion-icon slot="end" name="trash-outline"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

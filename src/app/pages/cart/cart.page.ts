@@ -20,6 +20,35 @@ export class CartPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    await this.refresh();
+  }
+
+  public async show(company) {
+    const modal = await this.modalCtrl.create({
+      component: CartDetailPage,
+      componentProps: {
+        company
+      }
+    });
+
+    modal.onDidDismiss().then(async () => {
+      await this.refresh();
+    });
+
+    return await modal.present();
+  }
+
+  private async getCompanyInfo(id): Promise<any> {
+    return new Promise((resolve) => {
+      this.companyService.getInfo(id).subscribe((result) => {
+        resolve(result.company);
+      });
+    });
+  }
+
+  public async refresh() {
+    this.companies = [];
+
     this.cartService.getAllProducts().then(result => {
       if (result === null) {
         this.companies = [];
@@ -33,24 +62,6 @@ export class CartPage implements OnInit {
         });
 
         this.companies.push({...await this.getCompanyInfo(company), products: result[company], totalProducts});
-      });
-    });
-  }
-
-  public async show(company) {
-    const modal = await this.modalCtrl.create({
-      component: CartDetailPage,
-      componentProps: {
-        company
-      }
-    });
-    return await modal.present();
-  }
-
-  private async getCompanyInfo(id): Promise<any> {
-    return new Promise((resolve) => {
-      this.companyService.getInfo(id).subscribe((result) => {
-        resolve(result.company);
       });
     });
   }
