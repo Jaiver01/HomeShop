@@ -21,6 +21,11 @@ export class CartPage implements OnInit {
 
   async ngOnInit() {
     this.cartService.getAllProducts().then(result => {
+      if (result === null) {
+        this.companies = [];
+        return;
+      }
+
       Object.keys(result).forEach(async (company) => {
         let totalProducts = 0;
         result[company].forEach(product => {
