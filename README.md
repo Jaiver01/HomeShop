@@ -4,9 +4,7 @@ HomeShop
 
 Descripción y contexto
  
-La app básicamente busca situar todos los productos de cualquier
-negocio que desee promover su negocio a partir de una plataforma digital 
-debido a las dificultades presentadas por la pandemia.
+La aplicación consiste en presentar un catalogo de productos de cualquier negocio que desee promover su negocio a partir de una plataforma digital debido a las dificultades presentadas por la pandemia ya que su entorno comercial se ha mirado afectado además que sus clientes no puede salir e ir a su negocio para abastecerse o bien sea para satisfacerse su necesidad previamente comprado un producto que requiere.
 
 Guía de instalación:
 Lo primero que debe hacer la persona que desse usar el producto sera descargar el apk, ¿Que es un apk?
